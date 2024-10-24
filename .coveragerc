@@ -1,8 +1,8 @@
 [run]
-source = project_name
+source = db_router
 
 [report]
 omit =
     */python?.?/*
     */site-packages/nose/*
-    project_name/__main__.py
+    db_router/__main__.py

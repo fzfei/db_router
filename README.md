@@ -38,7 +38,7 @@ See also
 - ✅ Code linting using [flake8](https://flake8.pycqa.org/en/latest/)
 - 📊 Code coverage reports using [codecov](https://about.codecov.io/sign-up/)
 - 🛳️ Automatic release to [PyPI](https://pypi.org) using [twine](https://twine.readthedocs.io/en/latest/) and github actions.
-- 🎯 Entry points to execute your program using `python -m <project_name>` or `$ project_name` with basic CLI argument parsing.
+- 🎯 Entry points to execute your program using `python -m <db_router>` or `$ db_router` with basic CLI argument parsing.
 - 🔄 Continuous integration using [Github Actions](.github/workflows/) with jobs to lint, test and release your project on Linux, Mac and Windows environments.
 
 > Curious about architectural decisions on this template? read [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  
@@ -49,51 +49,51 @@ See also
 <!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
 
 ---
-# project_name
+# db_router
 
-[![codecov](https://codecov.io/gh/author_name/project_urlname/branch/main/graph/badge.svg?token=project_urlname_token_here)](https://codecov.io/gh/author_name/project_urlname)
-[![CI](https://github.com/author_name/project_urlname/actions/workflows/main.yml/badge.svg)](https://github.com/author_name/project_urlname/actions/workflows/main.yml)
+[![codecov](https://codecov.io/gh/fzfei/db_router/branch/main/graph/badge.svg?token=db_router_token_here)](https://codecov.io/gh/fzfei/db_router)
+[![CI](https://github.com/fzfei/db_router/actions/workflows/main.yml/badge.svg)](https://github.com/fzfei/db_router/actions/workflows/main.yml)
 
-project_description
+Awesome db_router created by fzfei
 
 ## Install
 
 from source
 ```bash
-git clone https://github.com/author_name/project_urlname project_name
-cd project_name
+git clone https://github.com/fzfei/db_router db_router
+cd db_router
 make install
 ```
 
 from pypi
 
 ```bash
-pip install project_name
+pip install db_router
 ```
 
 ## Executing
 
 ```bash
-$ project_name run --port 8080
+$ db_router run --port 8080
 ```
 
 or
 
 ```bash
-python -m project_name run --port 8080
+python -m db_router run --port 8080
 ```
 
 or
 
 ```bash
-$ uvicorn project_name:app
+$ uvicorn db_router:app
 ```
 
 ## CLI
 
 ```bash
-❯ project_name --help
-Usage: project_name [OPTIONS] COMMAND [ARGS]...
+❯ db_router --help
+Usage: db_router [OPTIONS] COMMAND [ARGS]...
 
 Options:
   --install-completion [bash|zsh|fish|powershell|pwsh]
@@ -112,8 +112,8 @@ Commands:
 ### Creating a user
 
 ```bash
-❯ project_name create-user --help
-Usage: project_name create-user [OPTIONS] USERNAME PASSWORD
+❯ db_router create-user --help
+Usage: db_router create-user [OPTIONS] USERNAME PASSWORD
 
   Create user
 
@@ -129,7 +129,7 @@ Options:
 **IMPORTANT** To create an admin user on the first run:
 
 ```bash
-project_name create-user admin admin --superuser
+db_router create-user admin admin --superuser
 ```
 
 ### The Shell
@@ -137,7 +137,7 @@ project_name create-user admin admin --superuser
 You can enter an interactive shell with all the objects imported.
 
 ```bash
-❯ project_name shell       
+❯ db_router shell       
 Auto imports: ['app', 'settings', 'User', 'engine', 'cli', 'create_user', 'select', 'session', 'Content']
 
 In [1]: session.query(Content).all()
@@ -151,12 +151,12 @@ Out[3]: [Content(text='string', title='string', created_time='2021-09-14T19:25:0
 
 ## API
 
-Run with `project_name run` and access http://127.0.0.1:8000/docs
+Run with `db_router run` and access http://127.0.0.1:8000/docs
 
 ![](https://raw.githubusercontent.com/rochacbruno/fastapi-project-template/master/docs/api.png)
 
 
-**For some api calls you must authenticate** using the user created with `project_name create-user`.
+**For some api calls you must authenticate** using the user created with `db_router create-user`.
 
 ## Testing
 
@@ -189,18 +189,18 @@ tests/test_user_api.py::test_user_create PASSED                           [100%]
 ----------- coverage: platform linux, python 3.9.6-final-0 -----------
 Name                              Stmts   Miss  Cover
 -----------------------------------------------------
-project_name/__init__.py              4      0   100%
-project_name/app.py                  16      1    94%
-project_name/cli.py                  21      0   100%
-project_name/config.py                5      0   100%
-project_name/db.py                   10      0   100%
-project_name/models/__init__.py       0      0   100%
-project_name/models/content.py       47      1    98%
-project_name/routes/__init__.py      11      0   100%
-project_name/routes/content.py       52     25    52%
-project_name/routes/security.py      15      1    93%
-project_name/routes/user.py          52     26    50%
-project_name/security.py            103     12    88%
+db_router/__init__.py              4      0   100%
+db_router/app.py                  16      1    94%
+db_router/cli.py                  21      0   100%
+db_router/config.py                5      0   100%
+db_router/db.py                   10      0   100%
+db_router/models/__init__.py       0      0   100%
+db_router/models/content.py       47      1    98%
+db_router/routes/__init__.py      11      0   100%
+db_router/routes/content.py       52     25    52%
+db_router/routes/security.py      15      1    93%
+db_router/routes/user.py          52     26    50%
+db_router/security.py            103     12    88%
 -----------------------------------------------------
 TOTAL                               336     66    80%
 
@@ -222,7 +222,7 @@ make fmt   # formats the code
 This project uses [Dynaconf](https://dynaconf.com) to manage configuration.
 
 ```py
-from project_name.config import settings
+from db_router.config import settings
 ```
 
 ## Acessing variables
@@ -251,14 +251,14 @@ dynaconf_merge = true
 echo = true
 ```
 
-> `dynaconf_merge` is a boolean that tells if the settings should be merged with the default settings defined in project_name/default.toml.
+> `dynaconf_merge` is a boolean that tells if the settings should be merged with the default settings defined in db_router/default.toml.
 
 ### As environment variables
 ```bash
-export PROJECT_NAME_KEY=value
-export PROJECT_NAME_KEY="@int 42"
-export PROJECT_NAME_KEY="@jinja {{ this.db.uri }}"
-export PROJECT_NAME_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
+export db_router_KEY=value
+export db_router_KEY="@int 42"
+export db_router_KEY="@jinja {{ this.db.uri }}"
+export db_router_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
 ```
 
 ### Secrets
@@ -272,7 +272,7 @@ can read those variables.
 ### Switching environments
 
 ```bash
-PROJECT_NAME_ENV=production project_name run
+db_router_ENV=production db_router run
 ```
 
 Read more on https://dynaconf.com

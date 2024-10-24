@@ -23,18 +23,18 @@ def read(*paths, **kwargs):
 
 
 description = """
-project_name API helps you do awesome stuff. 🚀
+db_router API helps you do awesome stuff. 🚀
 """
 
 app = FastAPI(
-    title="project_name",
+    title="db_router",
     description=description,
     version=read("VERSION"),
-    terms_of_service="http://project_name.com/terms/",
+    terms_of_service="http://db_router.com/terms/",
     contact={
-        "name": "author_name",
-        "url": "http://project_name.com/contact/",
-        "email": "author_name@project_name.com",
+        "name": "fzfei",
+        "url": "http://db_router.com/contact/",
+        "email": "fzfei@db_router.com",
     },
     license_info={
         "name": "The Unlicense",
